@@ -143,30 +143,48 @@ public class Bomberman extends Application
         if(p1.isPlaced()){
             gc.setFill(Color.ORANGE);
             gc.fillOval(p1Bomb.getX(), p1Bomb.getY(), 50, 50);
-            timer1++;
-            if(timer1 == 300){
-                map[(p1Bomb.getY() - 100) / 50][p1Bomb.getX() / 50] = 0;
-                p1.placeBomb(false);
-                List<Point> cool = p1Bomb.explode();
+            List<Point> cool = p1Bomb.explode();
+            if(timer1 >= 300){
                 for(int i = 0; i < cool.size(); i++){
-                    gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
+                    if(cool.get(i).getX() >= 0 && cool.get(i).getX() < 550 && cool.get(i).getY() < 650 && cool.get(i).getY() >= 100){
+                        gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
+                        map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                    }
                 }
-                timer1 = 0;
+                if(timer1 == 360){
+                    for(int i = 0; i < cool.size(); i++){
+                        if(cool.get(i).getX() >= 0 && cool.get(i).getX() < 550 && cool.get(i).getY() < 650 && cool.get(i).getY() >= 100){
+                            map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 0;
+                        }
+                    }
+                    p1.placeBomb(false);
+                    timer1 = 0;
+                }
             }
+            timer1++;
         }
         if(p2.isPlaced()){
             gc.setFill(Color.ORANGE);
             gc.fillOval(p2Bomb.getX(), p2Bomb.getY(), 50, 50);
-            timer2++;
-            if(timer2 == 300){
-                map[(p2Bomb.getY() - 100) / 50][p2Bomb.getX() / 50] = 0;
-                p2.placeBomb(false);
-                List<Point> cool = p2Bomb.explode();
+            List<Point> cool = p2Bomb.explode();
+            if(timer2 >= 300){
                 for(int i = 0; i < cool.size(); i++){
-                    gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
+                    if(cool.get(i).getX() >= 0 && cool.get(i).getX() < 550 && cool.get(i).getY() < 650 && cool.get(i).getY() >= 100){
+                        gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
+                        map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                    }
                 }
-                timer2 = 0;
+                if(timer2 == 360){
+                    for(int i = 0; i < cool.size(); i++){
+                        if(cool.get(i).getX() >= 0 && cool.get(i).getX() < 550 && cool.get(i).getY() < 650 && cool.get(i).getY() >= 100){
+                            map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 0;
+                        }
+                    }
+                    p2.placeBomb(false);
+                    timer2 = 0;
+                }
             }
+            timer2++;
         }
         // objects on screen
 
