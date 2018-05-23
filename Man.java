@@ -170,6 +170,9 @@ public class Bomberman extends Application
                     gc.setFill(Color.LIGHTBLUE);
                     gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                 }
+                if(map[i][j] > 12){
+                    map[i][j] = -1;
+                }
             }
         }
         gc.setFill(Color.BLUE);
@@ -204,7 +207,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 4;
                             }
@@ -224,7 +227,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 2;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 2;
                             }
@@ -244,7 +247,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() * 3 / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() * 3 / 4;
                             }
@@ -264,7 +267,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size();
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size();
                             }
