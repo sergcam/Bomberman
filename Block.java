@@ -3,7 +3,13 @@ public class Block{
     public Block(int x, int y){
         this.x = x;
         this.y = y;
-        item = ((int)(Math.random() * 7)) + 10;
+        double random = Math.random();
+        if(random >= .95){
+            item = -2;
+        }
+        else{
+            item = ((int) (random * 6)) + 10;
+        }
     }
     public int destroy(){
         return item;
