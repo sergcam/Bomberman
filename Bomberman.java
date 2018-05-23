@@ -151,6 +151,28 @@ public class Bomberman extends Application
                     gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                     blocks.add(new Block(j * 50, i * 50 + 100));
                 }
+                if(map[i][j] == 5){
+                    for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
+                        if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
+                            map[i][j] = blocks.get(blockInt).destroy();
+                        }
+                    }
+                }
+                if(map[i][j] == 10){
+                    gc.setFill(Color.PINK);
+                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                }
+                if(map[i][j] == 11){
+                    gc.setFill(Color.PURPLE);
+                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                }
+                if(map[i][j] == 12){
+                    gc.setFill(Color.LIGHTBLUE);
+                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                }
+                if(map[i][j] > 12){
+                    map[i][j] = -1;
+                }
             }
         }
         gc.setFill(Color.BLUE);
@@ -185,7 +207,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 4;
                             }
@@ -205,7 +227,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 2;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 2;
                             }
@@ -225,7 +247,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() * 3 / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() * 3 / 4;
                             }
@@ -245,7 +267,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size();
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size();
                             }
@@ -346,9 +368,12 @@ public class Bomberman extends Application
             }   
         }
         // objects on screen
-        checkManHit();
-        checkManCollect();
-
+        if(checkManHit(p1)){
+            p1.decreaseLives();
+        }
+        if(checkManHit(p2)){
+            p2.decreaseLives();
+        }
     }
 
     // run program
@@ -357,43 +382,14 @@ public class Bomberman extends Application
         Application.launch(args);
     }
 
-    public static boolean checkManHit(Man player){
-    	if(map[(player.getY() - 100) / 50][player.getX() / 50] == 2) {
-    		return true;	
-    	}
-    	return false;
+            public boolean checkManHit(Man x){
+                if(map[(x.getY() - 100) / 50][x.getX() / 50] == 2) {
+            return true;    
+        }
+        return false;
     }
 
-    public static void checkBlockHit(){
+    public static void checkManCollect(){
 
     }
-    
-    //sound is desired sound to be played. loops=0 means no loop, 1 means yes loop
-    public static void sound(String sound, int loops) {
-    	AudioPlayer MGP = AudioPlayer.player;
-        AudioStream BGM;
-
-        ContinuousAudioDataStream loop = null;
-
-        try
-        {
-            InputStream soundFile = null;
-            if(sound.equals("bgm")) {
-            	soundFile = new FileInputStream("C:\\Users\\sergi\\eclipse-workspace\\Bomberman\\music\\Super Bomberman - Area 1 music.wav");
-            }
-            BGM = new AudioStream(soundFile);
-            AudioPlayer.player.start(BGM);
-        }
-        catch(FileNotFoundException e){
-            System.out.print(e.toString());
-        }
-        catch(IOException error)
-        {
-            System.out.print(error.toString());
-        }
-        if(loops == 1) {
-        	MGP.start(loop);
-        }
-    }
-}
 }
