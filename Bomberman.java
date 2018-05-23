@@ -357,11 +357,43 @@ public class Bomberman extends Application
         Application.launch(args);
     }
 
-    public static void checkManHit(){
-
+    public static boolean checkManHit(Man player){
+    	if(map[(player.getY() - 100) / 50][player.getX() / 50] == 2) {
+    		return true;	
+    	}
+    	return false;
     }
 
-    public static void checkManCollect(){
+    public static void checkBlockHit(){
 
     }
+    
+    //sound is desired sound to be played. loops=0 means no loop, 1 means yes loop
+    public static void sound(String sound, int loops) {
+    	AudioPlayer MGP = AudioPlayer.player;
+        AudioStream BGM;
+
+        ContinuousAudioDataStream loop = null;
+
+        try
+        {
+            InputStream soundFile = null;
+            if(sound.equals("bgm")) {
+            	soundFile = new FileInputStream("C:\\Users\\sergi\\eclipse-workspace\\Bomberman\\music\\Super Bomberman - Area 1 music.wav");
+            }
+            BGM = new AudioStream(soundFile);
+            AudioPlayer.player.start(BGM);
+        }
+        catch(FileNotFoundException e){
+            System.out.print(e.toString());
+        }
+        catch(IOException error)
+        {
+            System.out.print(error.toString());
+        }
+        if(loops == 1) {
+        	MGP.start(loop);
+        }
+    }
+}
 }
