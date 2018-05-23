@@ -1,15 +1,16 @@
 public class Man{
     private String name;
     private int lives;
-    private int x, y, bombStr;
+    private int x, y, bombStr, bombStorage;
     private boolean placedBomb;
     public Man(String name, int x, int y){
         this.name = name;
         lives = 3;
         this.x = x;
         this.y = y;
-        bombStr = 50;
+        bombStr = 100;
         placedBomb = false;
+        bombStorage = 1;
     }
 
     public void moveUp(){
@@ -66,5 +67,13 @@ public class Man{
     
     public boolean isPlaced(){
         return placedBomb;
+    }
+    
+    public void increaseBombStorage(){
+        bombStorage++;
+    }
+    
+    public int getBombStorage(){
+        return bombStorage;
     }
 }
