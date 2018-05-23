@@ -151,13 +151,6 @@ public class Bomberman extends Application
                     gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                     blocks.add(new Block(j * 50, i * 50 + 100));
                 }
-                if(map[i][j] == 5){
-                    for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
-                        if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
-                            map[i][j] = blocks.get(blockInt).destroy();
-                        }
-                    }
-                }
                 if(map[i][j] == 10){
                     gc.setFill(Color.PINK);
                     gc.fillRect(j * 50, i * 50 + 100, 50, 50);
@@ -207,7 +200,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 4;
                             }
@@ -227,7 +220,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() / 2;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 2;
                             }
@@ -247,7 +240,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size() * 3 / 4;
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() * 3 / 4;
                             }
@@ -267,7 +260,7 @@ public class Bomberman extends Application
                                 map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] = 5;
                                 i = cool.size();
                             }
-                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 10 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 11 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 12 || map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == -1){
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size();
                             }
@@ -282,6 +275,32 @@ public class Bomberman extends Application
                             for(int j = 0; j < map[0].length; j++){
                                 if(map[i][j] == 2){
                                     map[i][j] = 0;
+                                }
+                            }
+                        }
+                        for(int i = 0; i < map.length; i++){
+                            for(int j = 0; j < map[0].length; j++){
+                                if(map[i][j] == 5){
+                                    for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
+                                        if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
+                                            map[i][j] = blocks.get(blockInt).destroy();
+                                        }
+                                    }
+                                }
+                                if(map[i][j] == 10){
+                                    gc.setFill(Color.PINK);
+                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                }
+                                if(map[i][j] == 11){
+                                    gc.setFill(Color.PURPLE);
+                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                }
+                                if(map[i][j] == 12){
+                                    gc.setFill(Color.LIGHTBLUE);
+                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                }
+                                if(map[i][j] > 12){
+                                    map[i][j] = -1;
                                 }
                             }
                         }
@@ -382,8 +401,8 @@ public class Bomberman extends Application
         Application.launch(args);
     }
 
-            public boolean checkManHit(Man x){
-                if(map[(x.getY() - 100) / 50][x.getX() / 50] == 2) {
+    public boolean checkManHit(Man x){
+        if(map[(x.getY() - 100) / 50][x.getX() / 50] == 2) {
             return true;    
         }
         return false;
