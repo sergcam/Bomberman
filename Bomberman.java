@@ -220,6 +220,16 @@ public class Bomberman extends Application
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 4;
                             }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p1Bombs.size(); bombInt++){
+                                    if(p1Bombs.get(bombInt).getX() == cool.get(i).getX() && p1Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p1Bombs.get(bombInt).getTime() < 300){
+                                            p1Bombs.get(bombInt).setTick(p1Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                            }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
@@ -239,6 +249,16 @@ public class Bomberman extends Application
                             else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 2;
+                            }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p1Bombs.size(); bombInt++){
+                                    if(p1Bombs.get(bombInt).getX() == cool.get(i).getX() && p1Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p1Bombs.get(bombInt).getTime() < 300){
+                                            p1Bombs.get(bombInt).setTick(p1Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -260,6 +280,16 @@ public class Bomberman extends Application
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() * 3 / 4;
                             }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p1Bombs.size(); bombInt++){
+                                    if(p1Bombs.get(bombInt).getX() == cool.get(i).getX() && p1Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p1Bombs.get(bombInt).getTime() < 300){
+                                            p1Bombs.get(bombInt).setTick(p1Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                            }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
@@ -279,6 +309,16 @@ public class Bomberman extends Application
                             else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size();
+                            }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p1Bombs.size(); bombInt++){
+                                    if(p1Bombs.get(bombInt).getX() == cool.get(i).getX() && p1Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p1Bombs.get(bombInt).getTime() < 300){
+                                            p1Bombs.get(bombInt).setTick(p1Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -304,22 +344,22 @@ public class Bomberman extends Application
                                     }
                                 }
                                 /*if(map[i][j] == 10){
-                                    gc.setFill(Color.PINK);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.PINK);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] == 11){
-                                    gc.setFill(Color.PURPLE);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.PURPLE);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] == 12){
-                                    gc.setFill(Color.LIGHTBLUE);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.LIGHTBLUE);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] > 12){
-                                    map[i][j] = -1;
+                                map[i][j] = -1;
                                 }
                                 else{
-                                    map[i][j] = -2;
+                                map[i][j] = -2;
                                 }*/
                             }
                         }
@@ -358,6 +398,16 @@ public class Bomberman extends Application
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 4;
                             }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p2Bombs.size(); bombInt++){
+                                    if(p2Bombs.get(bombInt).getX() == cool.get(i).getX() && p2Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p2Bombs.get(bombInt).getTime() < 300){
+                                            p2Bombs.get(bombInt).setTick(p2Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                            }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
@@ -377,6 +427,16 @@ public class Bomberman extends Application
                             else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() / 2;
+                            }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p2Bombs.size(); bombInt++){
+                                    if(p2Bombs.get(bombInt).getX() == cool.get(i).getX() && p2Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p2Bombs.get(bombInt).getTime() < 300){
+                                            p2Bombs.get(bombInt).setTick(p2Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -398,6 +458,16 @@ public class Bomberman extends Application
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size() * 3 / 4;
                             }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p2Bombs.size(); bombInt++){
+                                    if(p2Bombs.get(bombInt).getX() == cool.get(i).getX() && p2Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p2Bombs.get(bombInt).getTime() < 300){
+                                            p2Bombs.get(bombInt).setTick(p2Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                            }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
@@ -417,6 +487,16 @@ public class Bomberman extends Application
                             else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 5){
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
                                 i = cool.size();
+                            }
+                            else if(map[(cool.get(i).getY() - 100) / 50][cool.get(i).getX() / 50] == 3){
+                                for(int bombInt = 0; bombInt < p2Bombs.size(); bombInt++){
+                                    if(p2Bombs.get(bombInt).getX() == cool.get(i).getX() && p2Bombs.get(bombInt).getY() == cool.get(i).getY()){
+                                        if(p2Bombs.get(bombInt).getTime() < 300){
+                                            p2Bombs.get(bombInt).setTick(p2Bombs.get(b).getTime());
+                                        }
+                                    }
+                                }
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -442,22 +522,22 @@ public class Bomberman extends Application
                                     }
                                 }
                                 /*if(map[i][j] == 10){
-                                    gc.setFill(Color.PINK);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.PINK);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] == 11){
-                                    gc.setFill(Color.PURPLE);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.PURPLE);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] == 12){
-                                    gc.setFill(Color.LIGHTBLUE);
-                                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                                gc.setFill(Color.LIGHTBLUE);
+                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
                                 }
                                 else if(map[i][j] > 12){
-                                    map[i][j] = -1;
+                                map[i][j] = -1;
                                 }
                                 else if
-                                    map[i][j] = -2;
+                                map[i][j] = -2;
                                 }*/
                             }
                         }
