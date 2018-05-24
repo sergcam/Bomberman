@@ -196,14 +196,16 @@ public class Bomberman extends Application
         gc.setFill(Color.GREY);
         if(p1.isPlaced()){
             for(int b = 0; b < p1Bombs.size(); b++){
-                gc.setFill(Color.BLUE);
-                if(p1Bombs.get(b).getTime() % 20 == 0){
-                    gc.setFill(Color.WHITE);   
+                if(p1Bombs.get(b).getTime() < 359){
+                    gc.setFill(Color.BLUE);
+                    if(p1Bombs.get(b).getTime() % 20 == 0){
+                        gc.setFill(Color.WHITE);   
+                    }
+                    gc.fillOval(p1Bombs.get(b).getX(), p1Bombs.get(b).getY(), 50, 50);
                 }
-                gc.fillOval(p1Bombs.get(b).getX(), p1Bombs.get(b).getY(), 50, 50);
                 List<Point> cool = p1Bombs.get(b).explode();
                 p1Bombs.get(b).tick();
-                if(p1Bombs.get(b).getTime() >= 300){
+                if(p1Bombs.get(b).getTime() >= 300 && p1Bombs.get(b).getTime() < 360){
                     gc.setFill(Color.ORANGE);
                     gc.fillRect(p1Bombs.get(b).getX(), p1Bombs.get(b).getY(), 50, 50);
                     for(int i = 0; i < cool.size() / 4; i++){
@@ -228,7 +230,7 @@ public class Bomberman extends Application
                                         }
                                     }
                                 }
-                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -258,7 +260,7 @@ public class Bomberman extends Application
                                         }
                                     }
                                 }
-                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -288,7 +290,7 @@ public class Bomberman extends Application
                                         }
                                     }
                                 }
-                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -318,7 +320,7 @@ public class Bomberman extends Application
                                         }
                                     }
                                 }
-                                //map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
+                                map[(cool.get(i).getY() - 100)/ 50][cool.get(i).getX() / 50] = 2;
                             }
                             else{
                                 gc.fillRect(cool.get(i).getX(), cool.get(i).getY(), 50, 50);
@@ -326,47 +328,48 @@ public class Bomberman extends Application
                             }
                         }
                     }
-                    if(p1Bombs.get(b).getTime() == 360){
-                        for(int i = 0; i < map.length; i++){
-                            for(int j = 0; j < map[0].length; j++){
-                                if(map[i][j] == 2){
-                                    map[i][j] = 0;
-                                }
+                }
+                if(p1Bombs.get(b).getTime() == 360){
+                    for(int i = 0; i < map.length; i++){
+                        for(int j = 0; j < map[0].length; j++){
+                            if(map[i][j] == 2){
+                                map[i][j] = 0;
                             }
                         }
-                        for(int i = 0; i < map.length; i++){
-                            for(int j = 0; j < map[0].length; j++){
-                                if(map[i][j] == 5){
-                                    for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
-                                        if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
-                                            map[i][j] = blocks.get(blockInt).destroy();
-                                        }
+                    }
+                    for(int i = 0; i < map.length; i++){
+                        for(int j = 0; j < map[0].length; j++){
+                            if(map[i][j] == 5){
+                                for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
+                                    if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
+                                        map[i][j] = blocks.get(blockInt).destroy();
                                     }
                                 }
-                                /*if(map[i][j] == 10){
-                                gc.setFill(Color.PINK);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] == 11){
-                                gc.setFill(Color.PURPLE);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] == 12){
-                                gc.setFill(Color.LIGHTBLUE);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] > 12){
-                                map[i][j] = -1;
-                                }
-                                else{
-                                map[i][j] = -2;
-                                }*/
                             }
+                            /*if(map[i][j] == 10){
+                            gc.setFill(Color.PINK);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] == 11){
+                            gc.setFill(Color.PURPLE);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] == 12){
+                            gc.setFill(Color.LIGHTBLUE);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] > 12){
+                            map[i][j] = -1;
+                            }
+                            else{
+                            map[i][j] = -2;
+                            }*/
                         }
-                        map[(p1Bombs.get(b).getY() - 100) / 50][p1Bombs.get(b).getX() / 50] = 0;
-                        p1Bombs.remove(b);
                     }
+                    map[(p1Bombs.get(b).getY() - 100) / 50][p1Bombs.get(b).getX() / 50] = 0;
+                    p1Bombs.remove(b);
                 }
+
             }
             if(p1Bombs.size() == 0){
                 p1.placeBomb(false);
@@ -374,14 +377,16 @@ public class Bomberman extends Application
         }
         if(p2.isPlaced()){
             for(int b = 0; b < p2Bombs.size(); b++){
-                gc.setFill(Color.RED);
-                if(p2Bombs.get(b).getTime() % 20 == 0){
-                    gc.setFill(Color.WHITE);   
+                if(p2Bombs.get(b).getTime() < 359){
+                    gc.setFill(Color.RED);
+                    if(p2Bombs.get(b).getTime() % 20 == 0){
+                        gc.setFill(Color.WHITE);   
+                    }
+                    gc.fillOval(p2Bombs.get(b).getX(), p2Bombs.get(b).getY(), 50, 50);
                 }
-                gc.fillOval(p2Bombs.get(b).getX(), p2Bombs.get(b).getY(), 50, 50);
                 List<Point> cool = p2Bombs.get(b).explode();
                 p2Bombs.get(b).tick();
-                if(p2Bombs.get(b).getTime() >= 300){
+                if(p2Bombs.get(b).getTime() >= 300 && p2Bombs.get(b).getTime() < 360){
                     gc.setFill(Color.ORANGE);
                     gc.fillRect(p2Bombs.get(b).getX(), p2Bombs.get(b).getY(), 50, 50);
                     for(int i = 0; i < cool.size() / 4; i++){
@@ -504,47 +509,48 @@ public class Bomberman extends Application
                             }
                         }
                     }
-                    if(p2Bombs.get(b).getTime() == 360){
-                        for(int i = 0; i < map.length; i++){
-                            for(int j = 0; j < map[0].length; j++){
-                                if(map[i][j] == 2){
-                                    map[i][j] = 0;
-                                }
+                }
+                if(p2Bombs.get(b).getTime() == 360){
+                    for(int i = 0; i < map.length; i++){
+                        for(int j = 0; j < map[0].length; j++){
+                            if(map[i][j] == 2){
+                                map[i][j] = 0;
                             }
                         }
-                        for(int i = 0; i < map.length; i++){
-                            for(int j = 0; j < map[0].length; j++){
-                                if(map[i][j] == 5){
-                                    for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
-                                        if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
-                                            map[i][j] = blocks.get(blockInt).destroy();
-                                        }
+                    }
+                    for(int i = 0; i < map.length; i++){
+                        for(int j = 0; j < map[0].length; j++){
+                            if(map[i][j] == 5){
+                                for(int blockInt = 0; blockInt < blocks.size(); blockInt++){
+                                    if(blocks.get(blockInt).getX() == j * 50 && blocks.get(blockInt).getY() == i * 50 + 100){
+                                        map[i][j] = blocks.get(blockInt).destroy();
                                     }
                                 }
-                                /*if(map[i][j] == 10){
-                                gc.setFill(Color.PINK);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] == 11){
-                                gc.setFill(Color.PURPLE);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] == 12){
-                                gc.setFill(Color.LIGHTBLUE);
-                                gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                                }
-                                else if(map[i][j] > 12){
-                                map[i][j] = -1;
-                                }
-                                else if
-                                map[i][j] = -2;
-                                }*/
                             }
+                            /*if(map[i][j] == 10){
+                            gc.setFill(Color.PINK);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] == 11){
+                            gc.setFill(Color.PURPLE);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] == 12){
+                            gc.setFill(Color.LIGHTBLUE);
+                            gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                            }
+                            else if(map[i][j] > 12){
+                            map[i][j] = -1;
+                            }
+                            else if
+                            map[i][j] = -2;
+                            }*/
                         }
-                        map[(p2Bombs.get(b).getY() - 100) / 50][p2Bombs.get(b).getX() / 50] = 0;
-                        p2Bombs.remove(b);
                     }
+                    map[(p2Bombs.get(b).getY() - 100) / 50][p2Bombs.get(b).getX() / 50] = 0;
+                    p2Bombs.remove(b);
                 }
+
             }
             if(p2Bombs.size() == 0){
                 p2.placeBomb(false);
