@@ -42,6 +42,9 @@ public class Bomb{
     public void tick(){
         time++;
     }
+    public void setTick(int t){
+        time = t;
+    }
     public int getTime(){
         return time;
     }
