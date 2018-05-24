@@ -188,9 +188,6 @@ public class Bomberman extends Application
 
     private void run(GraphicsContext gc)
     {
-    	//debug prints
-    	System.out.println(map[(p1.getY() - 100) / 50][p1.getX() / 50]);
-    	System.out.print(p1.isInvincible());
         // color for background
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, 550, 650);
