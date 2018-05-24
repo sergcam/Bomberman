@@ -145,42 +145,29 @@ public class Bomberman extends Application
         for(int i = 0; i < map.length; i++){
             for(int j = 0; j < map.length; j++){
                 if(map[i][j] == 1){
-                    gc.setFill(Color.GREY);
-                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                    //graphics for solid blocks
                 }
                 if(map[i][j] == 4){
-                    gc.setFill(Color.BROWN);
-                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
+                    //graphics for destructible blocks
                     blocks.add(new Block(j * 50, i * 50 + 100));
                 }
                 if(map[i][j] == 10){
-                    gc.setFill(Color.WHITE);
-                    gc.fillRect(j * 50, i * 50 + 100, 50, 50);
-                    gc.setFill(Color.RED);
-                    gc.fillRect(j * 50 + 20, i * 50 + 10 + 100, 10, 30);
-                    gc.fillRect(j * 50 + 10, i * 50 + 20 + 100, 30, 10);
+                    //graphics for life
                 }
                 if(map[i][j] == 11){
-                    gc.setFill(Color.BLACK);
-                    gc.fillOval(j * 50, i * 50 + 100, 50, 50);
+                    //graphics for bomb
                 }
                 if(map[i][j] == 12){
-                    gc.setFill(Color.BLACK);
-                    gc.fillOval(j * 50, i * 50 + 100, 50, 50);
-                    gc.setFill(Color.RED);
-                    gc.fillRect(j * 50 + 20, i * 50 + 10 + 100, 10, 30);
-                    gc.fillRect(j * 50 + 10, i * 50 + 20 + 100, 30, 10);
+                    //graphics for fire 
                 }
                 if(map[i][j] > 12){
                     map[i][j] = -1;
                 }
                 if(map[i][j] == -2){
-                    gc.setFill(Color.YELLOW);
-                    gc.fillOval(j * 50, i * 50 + 100, 50, 50);
-                    gc.setFill(Color.BLACK);
-                    gc.fillRect(j * 50 + 15, i * 50 + 100 + 10, 5, 17);
-                    gc.fillRect(j * 50 + 30, i * 50 + 100 + 10, 5, 17);
-                    gc.fillOval(j * 50 + 19, i * 50 + 100 + 30, 10, 10);
+                    //grapghics for max bomb
+                }
+                if(map[i][j] == -3){
+                    //graphics for max fire
                 }
             }
         }
