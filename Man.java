@@ -3,6 +3,7 @@ public class Man{
     private int lives;
     private int x, y, bombStr, bombStorage;
     private boolean placedBomb;
+    private boolean inv;
     public Man(String name, int x, int y){
         this.name = name;
         lives = 3;
@@ -11,6 +12,8 @@ public class Man{
         bombStr = 50;
         placedBomb = false;
         bombStorage = 1;
+        inv = false;
+        
     }
 
     public void moveUp(){
@@ -79,5 +82,13 @@ public class Man{
     
     public int getBombStorage(){
         return bombStorage;
+    }
+    
+    public boolean isInvincible() {
+    	return inv;
+    }
+    
+    public void revInv() {
+    	inv = !inv;
     }
 }
